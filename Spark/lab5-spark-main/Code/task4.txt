@@ -1,0 +1,11 @@
+val lines = sc.textFile("./data_input")
+
+val inlinks = lines.map(_.split('\t')).map(s => (s(0).toInt, s(1).toInt)).reduceByKey(_+_).collect().toMap
+
+var oneHopLinks = scala.collection.mutable.Map[Int, Int]()
+
+inlinks.map(tup => {
+	inlinks.filterKeys(tup._2 == _).foreach(kvp => oneHopLinks += (tup._1 -> kvp._2));
+})
+
+val result = oneHopLinks.toList.union(inlinks.toList)

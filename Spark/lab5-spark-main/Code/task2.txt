@@ -1,0 +1,7 @@
+val lines = sc.textFile("./data_input")
+
+val lhs = lines.map(_.split('\t')).map(s => (s(0).toInt, s(1).toInt))
+
+val rhs = lines.map(_.split('\t')).map(s => (s(1).toInt, s(0).toInt))
+
+val result = lhs.union(rhs).groupByKey().map(kvp => (kvp._1, kvp._2.toList.distinct))

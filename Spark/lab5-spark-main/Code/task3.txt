@@ -1,0 +1,5 @@
+val lines = sc.textFile("./data_input")
+
+val outlinks = lines.map(_.split('\t')).map(s => (s(0).toInt, 1)).reduceByKey(_+_)
+
+val result = outlinks.collect().toList.maxBy(_._2)._1
