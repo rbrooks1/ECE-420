@@ -1,0 +1,16 @@
+# Lab 2: A Multithreaded Server to Handle Concurrent Read and Write Requests
+
+## Executables
+
+### main1
+This program uses a single mutex to control access to the string array.
+
+### main2
+This program uses one mutex per string to control access to each element of the string array.
+
+### main3
+This program uses a single read-write lock to control access to the string array.
+
+### main4
+This program uses one read-write lock per string to control access to each element of the string array.
+
